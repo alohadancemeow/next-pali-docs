@@ -13,6 +13,14 @@ const config = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.ikiform.com',
+      },
+    ],
+  },
 };
 
 export default withMDX(config);
