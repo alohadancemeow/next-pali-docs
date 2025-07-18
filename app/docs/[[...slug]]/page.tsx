@@ -1,13 +1,15 @@
-import { source } from '@/lib/source';
+import { source } from "@/lib/source";
 import {
   DocsPage,
   DocsBody,
   DocsDescription,
   DocsTitle,
-} from 'fumadocs-ui/page';
-import { notFound } from 'next/navigation';
-import { createRelativeLink } from 'fumadocs-ui/mdx';
-import { getMDXComponents } from '@/mdx-components';
+} from "fumadocs-ui/page";
+import { notFound } from "next/navigation";
+import { createRelativeLink } from "fumadocs-ui/mdx";
+import { getMDXComponents } from "@/mdx-components";
+import { LLMCopyButton, ViewOptions } from "@/components/ai/page-actions";
+import { siteMetadata } from "@/site.config";
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -19,9 +21,39 @@ export default async function Page(props: {
   const MDXContent = page.data.body;
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage
+      toc={page.data.toc}
+      full={page.data.full}
+      tableOfContent={{ style: "clerk" }}
+      lastUpdate={
+        page.data.lastModified ? new Date(page.data.lastModified) : undefined
+      }
+      breadcrumb={{
+        includeRoot: true,
+        includeSeparator: true,
+      }}
+      footer={{
+        enabled: true,
+      }}
+      editOnGithub={{
+        owner: siteMetadata.github.owner,
+        repo: siteMetadata.github.repo,
+        sha: siteMetadata.github.branch,
+        path: `content/docs/${page.path}`,
+      }}
+      // article={{
+      //   className: "max-sm:pb-16",
+      // }}
+    >
       <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
+      <DocsDescription className="mb-0">{page.data.description}</DocsDescription>
+      <div className="flex flex-row gap-2 items-center border-b pb-6">
+        <LLMCopyButton markdownUrl={`${page.url}.mdx`} />
+        <ViewOptions
+          markdownUrl={`${page.url}.mdx`}
+          githubUrl={`https://github.com/${siteMetadata.github.owner}/${siteMetadata.github.repo}/blob/dev/apps/docs/content/docs/${page.path}`}
+        />
+      </div>
       <DocsBody>
         <MDXContent
           components={getMDXComponents({

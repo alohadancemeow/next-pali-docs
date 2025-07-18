@@ -1,4 +1,5 @@
-import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
+import { BookIcon } from "lucide-react";
 
 /**
  * Shared layout configurations
@@ -8,6 +9,7 @@ import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
  * Docs Layout: app/docs/layout.tsx
  */
 export const baseOptions: BaseLayoutProps = {
+  githubUrl: "https://github.com/alohadancemeow/next-pali-docs",
   nav: {
     title: (
       <>
@@ -19,10 +21,24 @@ export const baseOptions: BaseLayoutProps = {
         >
           <circle cx={12} cy={12} r={12} fill="currentColor" />
         </svg>
-        My App
+        Palidocs
       </>
     ),
   },
   // see https://fumadocs.dev/docs/ui/navigation/links
-  links: [],
+  links: [
+    {
+      icon: <BookIcon />,
+      text: "Blog",
+      url: "/blog",
+      // secondary items will be displayed differently on navbar
+      secondary: false,
+    },
+    {
+      icon: <BookIcon />,
+      text: "Quiz",
+      url: "/quiz",
+      secondary: false,
+    },
+  ],
 };
