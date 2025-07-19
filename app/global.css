@@ -112,6 +112,10 @@
   --sidebar-ring: oklch(0.646 0.222 41.116);
 }
 
+/* For automatic detection of Thai text */
+.thai-content-wrapper :where(*:lang(th)) {
+  font-family: "Thasadith", sans-serif;
+}
 
 @layer base {
   * {
@@ -128,4 +132,24 @@ nav {
 
 ul {
   gap: 0.4rem;
+}
+
+/* Thai numerals for steps */
+.fd-steps {
+  counter-reset: step-counter;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.fd-step {
+  counter-increment: step-counter;
+}
+
+.fd-step::before {
+  content: counter(step-counter, thai);
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+  border-radius: 9999px;
+  font-weight: 600;
 }
