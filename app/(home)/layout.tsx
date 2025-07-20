@@ -70,7 +70,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 const MainMenu = () => (
   <NavbarMenu>
     <NavbarMenuTrigger>
-      <Link href="/docs">Documentation</Link>
+      <Link href="/docs/part-1">Documentation</Link>
     </NavbarMenuTrigger>
     <NavbarMenuContent className="text-[15px]">
       <NavbarMenuLink

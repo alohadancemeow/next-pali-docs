@@ -1,0 +1,7 @@
+{
+  "title": "อักขรวิธี",
+  "description": "The docs framework",
+  "icon": "Building",
+  "root": true,
+  "pages": ["index", "---สมัญญาภิธาน---", "...vol-1.1", "---สนธิ---", "...vol-1.2"]
+}

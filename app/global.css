@@ -112,9 +112,14 @@
   --sidebar-ring: oklch(0.646 0.222 41.116);
 }
 
+body :where(*:lang(en)) {
+  font-family: "Inter", sans-serif;
+}
+
 /* For automatic detection of Thai text */
 .thai-content-wrapper :where(*:lang(th)) {
   font-family: "Thasadith", sans-serif;
+  font-weight: 600;
 }
 
 @layer base {
@@ -152,4 +157,9 @@ ul {
   color: var(--color-primary-foreground);
   border-radius: 9999px;
   font-weight: 600;
+}
+
+table {
+  background-color: transparent;
+  border-radius: 3px;
 }

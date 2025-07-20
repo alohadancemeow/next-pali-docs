@@ -42,7 +42,7 @@ const Hero = () => {
       </p>
       <div className="inline-flex items-center gap-3 max-md:mx-auto mb-12">
         <Link
-          href="/docs"
+          href="/docs/part-1"
           className={cn(
             buttonVariants({ size: "lg", className: "rounded-full" })
           )}

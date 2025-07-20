@@ -1,0 +1,7 @@
+{
+  "title": "ฉันทลักษณะ",
+  "description": "The docs framework",
+  "icon": "Building",
+  "root": true,
+  "pages": ["index", "---ฉันทลักษณะ---", "..."]
+}
