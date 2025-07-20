@@ -1,8 +1,9 @@
 import ContentNev from "./components/ContentNav";
 import Hero from "./components/Hero";
 import End from "./components/End";
-
 import Journey from "./components/Journey";
+import Highlights from "./components/Hightlights";
+import Break from "./components/Break";
 
 export default function HomePage() {
   return (
@@ -20,33 +21,20 @@ export default function HomePage() {
 
         <ContentNev />
 
-        <div
-          className="relative overflow-hidden border-x border-t px-8 py-16 sm:py-24"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at center, var(--color-primary), var(--color-fd-secondary), var(--color-fd-secondary), var(--color-fd-secondary), var(--color-fd-secondary), var(--color-fd-background) 30%)",
-          }}
-        >
-          <h2
-            lang="th"
-            className="text-center leading-snug text-2xl font-semibold sm:text-3xl"
-          >
-            อตฺตานํ ทมยนฺติ ปณฺฑิตา.
-            <br />
-            บัณฑิตย่อมฝึกตน ฯ
-          </h2>
-        </div>
+        <Break word="อตฺตานํ ทมยนฺติ ปณฺฑิตา." meaning="บัณฑิตย่อมฝึกตน ฯ" />
         {/* 
         <Features />
-        <Highlights />
         <Why />
         <Contributing />
         */}
         <Journey />
+        <Break
+          word="โยคา เว ชายเต ภูริ."
+          meaning="ปัญญา ย่อมเกิดขึ้น เพราะการฝึกฝน ฯ"
+        />
+        <Highlights />
         <End />
       </div>
     </main>
   );
 }
-
-

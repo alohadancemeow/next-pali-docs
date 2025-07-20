@@ -164,7 +164,7 @@ const Reference = () => (
         </TrackedLink>
       </Button>
     </TooltipTrigger>
-    <TooltipContent>
+    <TooltipContent className="bg-fd-card text-fd-muted-foreground">
       <p>The original content is available on pali-on-demand</p>
     </TooltipContent>
   </Tooltip>
