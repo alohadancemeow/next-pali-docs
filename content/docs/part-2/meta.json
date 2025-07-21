@@ -1,7 +1,7 @@
 {
   "title": "วจีวิภาค",
   "description": "The docs framework",
-  "icon": "Building",
+  "icon": "BookText",
   "root": true,
   "pages": [
     "index",

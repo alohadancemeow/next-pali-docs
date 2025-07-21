@@ -1,7 +1,7 @@
 {
   "title": "วากยสัมพันธ์",
   "description": "The docs framework",
-  "icon": "Building",
+  "icon": "BookUp",
   "root": true,
   "pages": ["index", "---วากยสัมพันธ์---", "..."]
 }
