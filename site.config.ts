@@ -5,6 +5,8 @@ export const siteMetadata = {
     owner: "alohadancemeow",
     repo: "next-pali-docs",
     branch: "main",
+    url: "https://github.com/alohadancemeow",
   },
-  url: "http://localhost:3000",
+  liveSiteUrl: "http://localhost:3000",
+  refSiteUrl: "https://pali-on-demand.vercel.app/",
 };

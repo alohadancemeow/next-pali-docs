@@ -1,4 +1,4 @@
-import { baseOptions } from "@/app/layout.config";
+import { baseOptions, logo } from "@/app/layout.config";
 import type { ReactNode } from "react";
 import { HomeLayout } from "fumadocs-ui/layouts/home";
 import {
@@ -7,7 +7,6 @@ import {
   NavbarMenuLink,
   NavbarMenuTrigger,
 } from "fumadocs-ui/layouts/home/navbar";
-import { Book, ComponentIcon, Kanban, Palette, Zap } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -17,6 +16,10 @@ import {
 } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import TrackedLink from "@/components/TrackedLink";
+import { mainMenuData } from "@/data/mainMenuData";
+import React from "react";
+import { Pin } from "lucide-react";
+import { siteMetadata } from "@/site.config";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -33,18 +36,11 @@ export default function Layout({ children }: { children: ReactNode }) {
           type: "menu",
           on: "menu",
           text: "Documentation",
-          items: [
-            {
-              text: "Getting Started",
-              url: "/docs/ui/getting-started/introduction",
-              icon: <Book />,
-            },
-            {
-              text: "Components",
-              url: "/docs/ui/everything-by-hextaui/base-components",
-              icon: <ComponentIcon />,
-            },
-          ],
+          items: mainMenuData.map((item) => ({
+            text: item.title,
+            url: item.href,
+            icon: item.icon,
+          })),
         },
         // only displayed on navbar, not mobile menu
         {
@@ -72,11 +68,8 @@ const MainMenu = () => (
     <NavbarMenuTrigger>
       <Link href="/docs/part-1">Documentation</Link>
     </NavbarMenuTrigger>
-    <NavbarMenuContent className="text-[15px]">
-      <NavbarMenuLink
-        href="/docs/ui/getting-started/introduction"
-        className="md:row-span-2"
-      >
+    <NavbarMenuContent lang="th" className="text-[15px]">
+      <NavbarMenuLink href="/docs/part-1" className="md:row-span-2">
         <div className="-mx-3 -mt-3">
           <Image
             src="/Screenshot.png"
@@ -90,54 +83,55 @@ const MainMenu = () => (
             }}
           />
         </div>
-        <p className="font-medium">Getting Started</p>
+        <p className="font-medium">เริ่มต้นเรียนบาลีไวยากรณ์</p>
         <p className="text-muted-foreground text-sm">
-          Introduction and installation guide for HextaUI.
+          เรียนรู้บาลีไวยากรณ์และค้นคว้าได้ด้วยตัวเองอย่างมีประสิทธิภาพ
+        </p>
+      </NavbarMenuLink>
+
+      <NavbarMenuLink href={mainMenuData[0].href} className="lg:col-start-2">
+        {React.createElement(mainMenuData[0].icon.type, {
+          className: "bg-primary text-primary-foreground p-1 mb-2 rounded-md",
+        })}
+        <p className="font-medium">{mainMenuData[0].title}</p>
+        <p className="text-muted-foreground text-sm">
+          {mainMenuData[0].description}
+        </p>
+      </NavbarMenuLink>
+
+      <NavbarMenuLink href={mainMenuData[1].href} className="lg:col-start-2">
+        {React.createElement(mainMenuData[1].icon.type, {
+          className: "bg-primary text-primary-foreground p-1 mb-2 rounded-md",
+        })}
+        <p className="font-medium">{mainMenuData[1].title}</p>
+        <p className="text-muted-foreground text-sm">
+          {mainMenuData[1].description}
         </p>
       </NavbarMenuLink>
 
       <NavbarMenuLink
-        href="/docs/ui/getting-started/installation"
-        className="lg:col-start-2"
-      >
-        <Zap className="bg-primary text-primary-foreground p-1 mb-2 rounded-md" />
-        <p className="font-medium">Installation</p>
-        <p className="text-muted-foreground text-sm">
-          How to install and set up HextaUI in your project.
-        </p>
-      </NavbarMenuLink>
-
-      <NavbarMenuLink
-        href="docs/ui/everything-by-hextaui/base-components"
-        className="lg:col-start-2"
-      >
-        <ComponentIcon className="bg-primary text-primary-foreground p-1 mb-2 rounded-md" />
-        <p className="font-medium">Components</p>
-        <p className="text-muted-foreground text-sm">
-          A complete set of base components projects. Copy, adapt, and
-          personalize them.
-        </p>
-      </NavbarMenuLink>
-
-      <NavbarMenuLink
-        href="/docs/ui/foundation/theming"
+        href={mainMenuData[2].href}
         className="lg:col-start-3 lg:row-start-1"
       >
-        <Palette className="bg-primary text-primary-foreground p-1 mb-2 rounded-md" />
-        <p className="font-medium">Theming</p>
+        {React.createElement(mainMenuData[2].icon.type, {
+          className: "bg-primary text-primary-foreground p-1 mb-2 rounded-md",
+        })}
+        <p className="font-medium">{mainMenuData[2].title}</p>
         <p className="text-muted-foreground text-sm">
-          How to customize the look and feel of HextaUI components using themes.
+          {mainMenuData[2].description}
         </p>
       </NavbarMenuLink>
 
       <NavbarMenuLink
-        href="/docs/ui/getting-started/roadmap"
+        href={mainMenuData[3].href}
         className="lg:col-start-3 lg:row-start-2"
       >
-        <Kanban className="bg-primary text-primary-foreground p-1 mb-2 rounded-md" />
-        <p className="font-medium">Roadmap</p>
+        {React.createElement(mainMenuData[3].icon.type, {
+          className: "bg-primary text-primary-foreground p-1 mb-2 rounded-md",
+        })}
+        <p className="font-medium">{mainMenuData[3].title}</p>
         <p className="text-muted-foreground text-sm">
-          Explore the future plans and features for HextaUI.
+          {mainMenuData[3].description}
         </p>
       </NavbarMenuLink>
     </NavbarMenuContent>
@@ -149,22 +143,19 @@ const Reference = () => (
     <TooltipTrigger asChild>
       <Button variant="secondary" className="rounded-full" asChild>
         <TrackedLink
-          href="https://pali-on-demand.vercel.app/"
+          href={siteMetadata.refSiteUrl}
           className="font-medium"
           target="_blank"
           // goal="sponsor_ikiform_click"
         >
-          <Image
-            src="https://www.ikiform.com/favicon.ico"
-            alt="pali-on-demand"
-            width={17}
-            height={17}
-          />
-          pali-on-demand
+          <div className="flex items-center justify-center gap-2">
+            <Pin />
+            <p>pali-on-demand</p>
+          </div>
         </TrackedLink>
       </Button>
     </TooltipTrigger>
-    <TooltipContent className="bg-fd-card text-fd-muted-foreground">
+    <TooltipContent className="bg-fd-card text-fd-muted-foreground hidden md:block">
       <p>The original content is available on pali-on-demand</p>
     </TooltipContent>
   </Tooltip>
@@ -172,19 +163,22 @@ const Reference = () => (
 
 function Footer() {
   return (
-    <footer className="mt-auto border-t bg-fd-card py-12 text-fd-secondary-foreground">
+    <footer
+    lang="en"
+      className="mt-auto border-t bg-fd-card py-12 text-fd-secondary-foreground"
+    >
       <div className="container flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="mb-1 text-sm font-semibold">Fumadocs</p>
-          <p className="text-xs">
+          {logo}
+          <p className="text-xs mt-2">
             Built with ❤️ by{" "}
             <a
-              href="https://fuma-dev.vercel.app"
+              href={siteMetadata.github.url}
               rel="noreferrer noopener"
               target="_blank"
               className="font-medium"
             >
-              Fuma
+              {siteMetadata.github.owner}
             </a>
           </p>
         </div>

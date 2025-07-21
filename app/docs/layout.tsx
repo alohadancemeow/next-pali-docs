@@ -2,15 +2,15 @@ import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import type { ReactNode } from "react";
 import { baseOptions } from "@/app/layout.config";
 import { source } from "@/lib/source";
-import { linkItems } from "@/app/layout.config";
+// import { linkItems } from "@/app/layout.config";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <DocsLayout
       tree={source.pageTree}
       {...baseOptions}
-      // links={[]}
-      links={linkItems.filter((item) => item.type === "icon")}
+      links={[]}
+      // links={linkItems.filter((item) => item.type === "icon")}
       sidebar={{
         defaultOpenLevel: 1,
         tabs: {
