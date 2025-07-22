@@ -1,6 +1,6 @@
 {
   "title": "ฉันทลักษณะ",
-  "description": "The docs framework",
+  "description": "ส่วนที่ว่าด้วยการแสดงวิธีแต่งฉันท์",
   "icon": "BookMarked",
   "root": true,
   "pages": ["index", "---ฉันทลักษณะ---", "..."]

@@ -1,8 +1,14 @@
 {
   "title": "อักขรวิธี",
-  "description": "The docs framework",
+  "description": "ส่วนที่ว่าด้วยอักษร",
   "icon": "BookA",
   "root": true,
-  "pages": ["index", "---สมัญญาภิธาน---", "...vol-1.1", "---สนธิ---", "...vol-1.2"]
+  "pages": [
+    "index",
+    "reference",
+    "---สมัญญาภิธาน---",
+    "...vol-1.1",
+    "---สนธิ---",
+    "...vol-1.2"
+  ]
 }
-

@@ -11,12 +11,20 @@ export function AlertDemo({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="grid w-full max-w-xl items-start gap-4">
+    <div className="grid w-full items-start gap-4">
       <Alert>
         <AlertCircleIcon />
         <AlertTitle>{title}</AlertTitle>
-        {description && <AlertDescription>{description}</AlertDescription>}
-        {children && <AlertDescription>{children}</AlertDescription>}
+        <AlertDescription className="mt-1">
+          {!description && children ? (
+            <div className="mt-[-8px]">{children}</div>
+          ) : (
+            <>
+              {description}
+              <div className="mt-[-16px]">{children}</div>
+            </>
+          )}
+        </AlertDescription>
       </Alert>
     </div>
   );

@@ -1,6 +1,6 @@
 {
   "title": "วากยสัมพันธ์",
-  "description": "The docs framework",
+  "description": "ส่วนที่ว่าด้วยการก และประพันธ์ผูกคำพูด",
   "icon": "BookUp",
   "root": true,
   "pages": ["index", "---วากยสัมพันธ์---", "..."]
