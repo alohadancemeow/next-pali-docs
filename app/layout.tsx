@@ -1,5 +1,5 @@
 import "@/app/global.css";
-import { RootProvider } from "fumadocs-ui/provider";
+import { Provider } from "@/providers/RootProvider";
 import { Inter, Thasadith } from "next/font/google";
 import type { ReactNode } from "react";
 
@@ -24,9 +24,9 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen" suppressHydrationWarning>
-        <RootProvider>
+        <Provider>
           <div className="thai-content-wrapper">{children}</div>
-        </RootProvider>
+        </Provider>
       </body>
     </html>
   );
