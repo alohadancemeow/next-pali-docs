@@ -7,28 +7,13 @@ export const revalidate = false;
 export function GET() {
   const results: DocumentRecord[] = [];
 
-  // for (const page of source.getPages()) {
-  //   results.push({
-  //     _id: page.url,
-  //     structured: page.data.structuredData,
-  //     url: page.url,
-  //     title: page.data.title,
-  //     description: page.data.description,
-  //   });
-  // }
-
   for (const page of source.getPages()) {
-    const results: DocumentRecord[] = [];
-
     results.push({
       _id: page.url,
+      structured: page.data.structuredData,
       url: page.url,
       title: page.data.title,
       description: page.data.description,
-      structured: {
-        contents: page.data.structuredData.contents,
-        headings: page.data.structuredData.headings,
-      },
     });
   }
 
