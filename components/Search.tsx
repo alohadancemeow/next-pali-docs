@@ -15,19 +15,19 @@ import {
 } from "fumadocs-ui/components/dialog/search";
 import { useDocsSearch } from "fumadocs-core/search/client";
 import { useI18n } from "fumadocs-ui/contexts/i18n";
-import type { DocumentRecord } from "fumadocs-core/search/algolia";
+// import type { DocumentRecord } from "fumadocs-core/search/algolia";
 
-function CustomSearchItem({ item }: { item: any }) {
-  console.log(item);
+// function CustomSearchItem({ item }: { item: any }) {
+//   console.log(item);
 
-  return (
-    <div className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
-      <h3 className="font-medium text-sm">{item.content}</h3>
-      <p className="text-xs text-gray-500 mt-1 line-clamp-2">{item.type}</p>
-      <div className="text-[10px] text-gray-400 mt-1">{item.url}</div>
-    </div>
-  );
-}
+//   return (
+//     <div className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+//       <h3 className="font-medium text-sm">{item.content}</h3>
+//       <p className="text-xs text-gray-500 mt-1 line-clamp-2">{item.type}</p>
+//       <div className="text-[10px] text-gray-400 mt-1">{item.url}</div>
+//     </div>
+//   );
+// }
 
 export default function CustomSearchDialog(props: SharedProps) {
   const { locale } = useI18n(); // (optional) for i18n
@@ -38,7 +38,8 @@ export default function CustomSearchDialog(props: SharedProps) {
     locale,
   });
 
-  console.log(query.data, "data");
+  // Debug: Log to verify we're getting Algolia data
+  // console.log("Search results:", query.data);
 
   return (
     <SearchDialog
