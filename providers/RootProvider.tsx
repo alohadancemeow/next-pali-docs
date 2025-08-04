@@ -2,7 +2,7 @@
 
 import { RootProvider } from "fumadocs-ui/provider";
 // your custom dialog
-import SearchDialog from "@/components/Search";
+import SearchDialog from "@/components/search/Search";
 import { useState, type ReactNode, useEffect } from "react";
 
 export function Provider({ children }: { children: ReactNode }) {
