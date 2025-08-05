@@ -15,6 +15,7 @@ import {
   type SharedProps,
 } from "fumadocs-ui/components/dialog/search";
 import CustomSearchItem from "./CustomSearchItem";
+import { AISearchTrigger } from "../ai";
 
 export interface SearchResult {
   objectID: string;
@@ -93,6 +94,7 @@ export default function MySearchDialog(props: SharedProps) {
           <SearchDialogIcon />
           <SearchDialogInput />
           <SearchDialogClose />
+          <AISearchTrigger />
         </SearchDialogHeader>
 
         <SearchDialogList
