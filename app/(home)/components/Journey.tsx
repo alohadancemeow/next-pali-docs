@@ -8,12 +8,12 @@ const Journey = () => {
       className="flex flex-col gap-4 border-x border-t p-8 md:px-12"
     >
       <div className="text-start">
-        <p
+        {/* <p
           lang="en"
           className="px-2 py-1 text-sm font-mono bg-fd-primary text-fd-primary-foreground font-bold w-fit mb-4"
         >
           Designed with Love
-        </p>
+        </p> */}
         <h2 className="text-3xl font-semibold mb-4">เส้นทางมหาเปรียญฯ</h2>
         <p className="text-fd-muted-foreground font-semibold mb-6">
           การศึกษาเปรียญธรรมเป็นการเรียนบาลีเพื่อทำความเข้าใจพระธรรมวินัย
@@ -80,7 +80,7 @@ const Journey = () => {
 
       <p className="text-fd-muted-foreground font-semibold mb-6">
         <span className="text-foreground">
-          พื้นฐานไวยากรณ์ = รากฐานของการศึกษาบาลี
+          พื้นฐานไวยากรณ์ เป็นดั่งรากฐานของการศึกษาบาลี
         </span>
         <br />
         เปรียญธรรมทุกระดับจำเป็นต้องมีพื้นฐานไวยากรณ์เปรียบดังรากฐานของต้นไม้

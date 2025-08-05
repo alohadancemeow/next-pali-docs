@@ -4,6 +4,7 @@ import End from "./components/End";
 import Journey from "./components/Journey";
 import Highlights from "./components/Hightlights";
 import Break from "./components/Break";
+import Features from "./components/Features";
 
 export default function HomePage() {
   return (
@@ -22,17 +23,21 @@ export default function HomePage() {
         <ContentNev />
 
         <Break word="อตฺตานํ ทมยนฺติ ปณฺฑิตา." meaning="บัณฑิตย่อมฝึกตน ฯ" />
-        {/* 
-        <Features />
-        <Why />
-        <Contributing />
-        */}
+
+        {/* <Why />
+        <Contributing /> */}
+
         <Journey />
         <Break
           word="โยคา เว ชายเต ภูริ."
           meaning="ปัญญา ย่อมเกิดขึ้น เพราะการฝึกฝน ฯ"
         />
+        <Features />
         <Highlights />
+        <Break
+          word="กาลาคตญฺจ น หาเปติ อตฺถํ."
+          meaning="คนขยัน ไม่ควรปล่อยให้ประโยชน์ที่มาถึงแล้วผ่านไปโดยเปล่า ฯ"
+        />
         <End />
       </div>
     </main>
