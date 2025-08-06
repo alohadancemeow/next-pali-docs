@@ -16,6 +16,8 @@ import {
 } from "fumadocs-ui/components/dialog/search";
 import CustomSearchItem from "./CustomSearchItem";
 import { AISearchTrigger } from "../ai";
+import { Button } from "../ui/button";
+import { Sparkles } from "lucide-react";
 
 export interface SearchResult {
   objectID: string;
@@ -34,6 +36,7 @@ export default function MySearchDialog(props: SharedProps) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(false);
+  const [aiSearchOpen, setAiSearchOpen] = useState<boolean>();
 
   // Search function
   const performSearch = async (searchQuery: string) => {
@@ -81,6 +84,10 @@ export default function MySearchDialog(props: SharedProps) {
     window.location.href = item.url;
   };
 
+  if (aiSearchOpen) {
+    return <AISearchTrigger open={aiSearchOpen} setOpen={setAiSearchOpen} />;
+  }
+
   return (
     <SearchDialog
       search={query}
@@ -93,8 +100,21 @@ export default function MySearchDialog(props: SharedProps) {
         <SearchDialogHeader>
           <SearchDialogIcon />
           <SearchDialogInput />
+          <Button
+            onClick={() => {
+              setAiSearchOpen(true);
+              if (props.onOpenChange) {
+                props.onOpenChange(false);
+              }
+            }}
+            variant="grow"
+            size="sm"
+            className="cursor-pointer"
+          >
+            <Sparkles />
+          </Button>
+
           <SearchDialogClose />
-          <AISearchTrigger />
         </SearchDialogHeader>
 
         <SearchDialogList
