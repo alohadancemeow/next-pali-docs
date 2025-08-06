@@ -1,4 +1,5 @@
 "use client";
+
 import {
   type ComponentProps,
   createContext,
@@ -48,7 +49,7 @@ function SearchAIActions(props: ComponentProps<"div">) {
             buttonVariants({
               variant: "secondary",
               size: "sm",
-              className: "rounded-full gap-1.5",
+              className: "rounded-full gap-1.5 cursor-pointer",
             })
           )}
           onClick={() => regenerate()}
@@ -63,7 +64,7 @@ function SearchAIActions(props: ComponentProps<"div">) {
           buttonVariants({
             variant: "secondary",
             size: "sm",
-            className: "rounded-full",
+            className: "rounded-full cursor-pointer",
           })
         )}
         onClick={() => setMessages([])}
@@ -78,6 +79,7 @@ function SearchAIInput(props: ComponentProps<"form">) {
   const { status, sendMessage, stop } = useChatContext();
   const [input, setInput] = useState("");
   const isLoading = status === "streaming" || status === "submitted";
+
   const onStart = (e?: SyntheticEvent) => {
     e?.preventDefault();
     void sendMessage({ text: input });
@@ -207,7 +209,7 @@ function Input(props: ComponentProps<"textarea">) {
 
 const roleName: Record<string, string> = {
   user: "you",
-  assistant: "fumadocs",
+  assistant: "palidocs",
 };
 
 function Message({
@@ -236,7 +238,7 @@ function Message({
           message.role === "assistant" && "text-fd-primary"
         )}
       >
-        {roleName[message.role] ?? "unknown"}
+        {`${roleName[message.role]}:` ?? "unknown"}
       </p>
       <div className="prose text-sm">
         <Markdown text={markdown} />
@@ -285,7 +287,7 @@ export default function AISearch(props: DialogProps) {
           <ChatContext value={chat}>
             <div className="px-3 py-2">
               <DialogTitle className="text-sm font-medium">
-                Inkeep AI
+                AI-Powered Search
               </DialogTitle>
               <DialogDescription className="text-xs text-fd-muted-foreground">
                 AI can be inaccurate, please verify the information.
