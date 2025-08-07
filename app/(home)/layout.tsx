@@ -18,12 +18,13 @@ import { Button } from "@/components/ui/button";
 import TrackedLink from "@/components/TrackedLink";
 import { mainMenuData } from "@/data/mainMenuData";
 import React from "react";
-import { Pin } from "lucide-react";
+import { CheckLine, Pin } from "lucide-react";
 import { siteMetadata } from "@/site.config";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <HomeLayout
+      lang="th"
       {...baseOptions}
       style={
         {
@@ -64,9 +65,9 @@ export default function Layout({ children }: { children: ReactNode }) {
 }
 
 const MainMenu = () => (
-  <NavbarMenu>
+  <NavbarMenu lang="th">
     <NavbarMenuTrigger>
-      <Link href="/docs/part-1">Documentation</Link>
+      <Link href="/docs/part-1">เมนูหลัก</Link>
     </NavbarMenuTrigger>
     <NavbarMenuContent lang="th" className="text-[15px]">
       <NavbarMenuLink href="/docs/part-1" className="md:row-span-2">
@@ -164,7 +165,7 @@ const Reference = () => (
 function Footer() {
   return (
     <footer
-    lang="en"
+      lang="en"
       className="mt-auto border-t bg-fd-card py-12 text-fd-secondary-foreground"
     >
       <div className="container flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
