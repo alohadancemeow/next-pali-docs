@@ -117,7 +117,12 @@ body {
 }
 
 body :where(*:lang(en)) {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", sans-serif;
+}
+
+pre > code * {
+  font-family: "Geist Mono", monospace !important;
+  font-weight: 400;
 }
 
 /* For automatic detection of Thai text */
