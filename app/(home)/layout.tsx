@@ -20,6 +20,7 @@ import { mainMenuData } from "@/data/mainMenuData";
 import React from "react";
 import { CheckLine, Pin } from "lucide-react";
 import { siteMetadata } from "@/site.config";
+import TestSearch from "./components/test-search";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -51,6 +52,11 @@ export default function Layout({ children }: { children: ReactNode }) {
         },
         // other items
         ...(baseOptions.links ?? []),
+        {
+          type: "custom",
+          children: <TestSearch />,
+          secondary: true,
+        },
         {
           type: "custom",
           children: <Reference />,
