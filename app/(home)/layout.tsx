@@ -20,7 +20,7 @@ import { mainMenuData } from "@/data/mainMenuData";
 import React from "react";
 import { CheckLine, Pin } from "lucide-react";
 import { siteMetadata } from "@/site.config";
-import TestSearch from "./components/test-search";
+import AlgoliaSearch from "../../components/search/AlgoliaSearch";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -32,6 +32,11 @@ export default function Layout({ children }: { children: ReactNode }) {
           "--spacing-fd-container": "1120px",
         } as object
       }
+      searchToggle={{
+        components: {
+          lg: <AlgoliaSearch />,
+        },
+      }}
       links={[
         // mobile menu items
         {
@@ -52,11 +57,11 @@ export default function Layout({ children }: { children: ReactNode }) {
         },
         // other items
         ...(baseOptions.links ?? []),
-        {
-          type: "custom",
-          children: <TestSearch />,
-          secondary: true,
-        },
+        // {
+        //   type: "custom",
+        //   children: <AlgoliaSearch />,
+        //   secondary: true,
+        // },
         {
           type: "custom",
           children: <Reference />,

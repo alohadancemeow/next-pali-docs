@@ -1,10 +1,10 @@
 "use client";
 
+import "@docsearch/css";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { DocSearch } from "@docsearch/react";
-
-import "@docsearch/css";
+import { useTheme } from "next-themes";
 
 type Props = {};
 
@@ -29,6 +29,8 @@ const SearchErrorFallback = ({ error, resetErrorBoundary }: any) => (
 
 // DocSearch component
 const DocSearchComponent = () => {
+  const { theme } = useTheme();
+
   const appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
   const apiKey = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY;
 
@@ -37,24 +39,27 @@ const DocSearchComponent = () => {
   }
 
   return (
-    <DocSearch
-      appId={appId}
-      apiKey={apiKey}
-      indexName="docs"
-      placeholder="Search documentation..."
-      searchParameters={{
-        hitsPerPage: 20,
-        // attributesToRetrieve: [
-        //   "hierarchy",
-        //   "content",
-        //   "url",
-        //   "type",
-        //   "title",
-        //   "description",
-        // ],
-      }}
-    />
+    <div data-theme={theme === "dark" ? "dark" : "light"}>
+      <DocSearch
+        appId={appId}
+        apiKey={apiKey}
+        indexName="docs"
+        placeholder="Search documentation..."
+        searchParameters={{
+          hitsPerPage: 20,
+          // attributesToRetrieve: [
+          //   "hierarchy",
+          //   "content",
+          //   "url",
+          //   "type",
+          //   "title",
+          //   "description",
+          // ],
+        }}
+      />
+    </div>
 
+    // # Testing
     // <DocSearch
     //   appId="PMZUYBQDAK"
     //   apiKey="24b09689d5b4223813d9b8e48563c8f6"
@@ -63,7 +68,7 @@ const DocSearchComponent = () => {
   );
 };
 
-const TestSearch = (props: Props) => {
+const AlgoliaSearch = (props: Props) => {
   return (
     <ErrorBoundary
       FallbackComponent={SearchErrorFallback}
@@ -76,4 +81,4 @@ const TestSearch = (props: Props) => {
   );
 };
 
-export default TestSearch;
+export default AlgoliaSearch;
