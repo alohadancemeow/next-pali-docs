@@ -18,9 +18,9 @@ import { Button } from "@/components/ui/button";
 import TrackedLink from "@/components/TrackedLink";
 import { mainMenuData } from "@/data/mainMenuData";
 import React from "react";
-import { CheckLine, Pin } from "lucide-react";
+import { Pin } from "lucide-react";
 import { siteMetadata } from "@/site.config";
-import AlgoliaSearch from "../../components/search/AlgoliaSearch";
+import AlgoliaSearch from "@/components/search/AlgoliaSearch";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -57,11 +57,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         },
         // other items
         ...(baseOptions.links ?? []),
-        // {
-        //   type: "custom",
-        //   children: <AlgoliaSearch />,
-        //   secondary: true,
-        // },
+
         {
           type: "custom",
           children: <Reference />,
@@ -183,7 +179,7 @@ function Footer() {
         <div>
           {logo}
           <p className="text-xs mt-2">
-            Built with ❤️ by{" "}
+            Built with 🧡 by{" "}
             <a
               href={siteMetadata.github.url}
               rel="noreferrer noopener"

@@ -35,7 +35,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     >
       <body className="flex flex-col min-h-screen" suppressHydrationWarning>
         <Provider>
-          <div className="thai-content-wrapper">{children}</div>
+          <div lang="th">{children}</div>
         </Provider>
 
         <script src="https://cdn.jsdelivr.net/npm/@docsearch/react@3"></script>

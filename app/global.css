@@ -146,16 +146,22 @@ body :where(*:lang(en)) {
   font-family: "Geist", sans-serif;
 }
 
+/* For automatic detection of Thai text */
+body :where(*:lang(th)) {
+  font-family: "Thasadith", sans-serif;
+  font-weight: 600;
+}
+
 pre > code * {
   font-family: "Geist Mono", monospace !important;
   font-weight: 400;
 }
 
 /* For automatic detection of Thai text */
-.thai-content-wrapper :where(*:lang(th)) {
+/* .thai-content-wrapper :where(*:lang(th)) {
   font-family: "Thasadith", sans-serif;
   font-weight: 600;
-}
+} */
 
 @layer base {
   * {
