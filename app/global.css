@@ -3,7 +3,8 @@
 @import "fumadocs-ui/css/preset.css";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:is(.dark *)); */
+@custom-variant dark (&:is([data-theme="dark"] *));
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -126,7 +127,7 @@
   /* DocSearch dark theme - simplified */
   --docsearch-primary-color: var(--background-fd-foreground) !important;
   --docsearch-text-color: var(--foreground) !important;
-  /* --docsearch-form-background: var(--card) !important; */
+  --docsearch-form-background: var(--card) !important;
   --docsearch-modal-background: var(--card) !important;
   --docsearch-searchbox-background: var(--background) !important;
   --docsearch-hit-background: var(--background) !important;
@@ -196,4 +197,19 @@ ul {
 table {
   background-color: transparent;
   border-radius: 3px;
+}
+
+/* DocSearch dark theme override */
+.DocSearch-Button:active,
+.DocSearch-Button:focus,
+.DocSearch-Button:hover {
+  background: var(--docsearch-modal-background) !important;
+}
+
+.DocSearch-SearchBar .DocSearch-Form {
+  background-color: var(--docsearch-modal-background) !important;
+}
+
+.DocSearch-Footer {
+  background-color: var(--docsearch-modal-background) !important;
 }
