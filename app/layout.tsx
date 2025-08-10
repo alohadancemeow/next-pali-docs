@@ -1,6 +1,11 @@
 import "@/app/global.css";
 import { Provider } from "@/providers/RootProvider";
-import { Thasadith, Geist, Geist_Mono } from "next/font/google";
+import {
+  Thasadith,
+  Geist,
+  Geist_Mono,
+  IBM_Plex_Sans_Thai,
+} from "next/font/google";
 import type { ReactNode } from "react";
 
 const geist = Geist({
@@ -17,6 +22,13 @@ const thasadith = Thasadith({
   subsets: ["thai"],
   display: "swap",
   weight: ["400", "700"],
+});
+
+const ibm = IBM_Plex_Sans_Thai({
+  variable: "--font-ibm",
+  subsets: ["thai", "latin"],
+  display: "swap",
+  weight: ["400", "500","600","700"],
 });
 
 // // Function to detect Thai language content

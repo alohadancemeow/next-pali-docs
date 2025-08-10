@@ -36,12 +36,18 @@ export default function Page(): React.ReactElement {
         <h1 className="mb-4 border-b-4 border-fd-foreground pb-2 text-4xl font-bold md:text-5xl">
           Palidocs Blog
         </h1>
-        <p lang="th" className="text-sm md:text-base">
-          จงเรียนรู้กับทุกคนที่ได้พานพบ อย่าให้พลาดแม้สิ่งเล็กๆ
-          แล้วเจ้าจะปราดเปรื่องยิ่งขึ้น ฯ
-        </p>
+        <div lang="th" className="md:text-base">
+          <p className="text-lg">
+            {`"จงเรียนรู้กับทุกคนที่ได้พานพบ อย่าให้พลาดแม้สิ่งเล็กๆ
+            แล้วเจ้าจะปราดเปรื่องยิ่งขึ้น ฯ"`}
+          </p>
+          <span className="text-sm"> — ส่วนหนึ่งจากคัมภีร์ทาลมุดของชาวยิว</span>
+        </div>
       </div>
-      <div className="grid grid-cols-1 border md:grid-cols-3 lg:grid-cols-4">
+      <div
+        lang="mixed"
+        className="grid grid-cols-1 border md:grid-cols-3 lg:grid-cols-4 text-lg font-bold leading-relaxed"
+      >
         {posts.map((post) => (
           <Link
             key={post.url}
@@ -49,7 +55,7 @@ export default function Page(): React.ReactElement {
             className="flex flex-col bg-fd-card p-4 transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground"
           >
             <p className="font-medium">{post.data.title}</p>
-            <p className="text-sm text-fd-muted-foreground">
+            <p className="text-sm font-medium text-fd-muted-foreground">
               {post.data.description}
             </p>
 

@@ -1,10 +1,10 @@
 import { siteMetadata } from "@/site.config";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
-import { NotebookPen, CheckLine, Feather } from "lucide-react";
+import { NotebookPen, CheckLine, LibraryIcon } from "lucide-react";
 
 export const logo = (
   <div lang="en" className="flex items-center  gap-2">
-    <Feather size={20} />
+    <LibraryIcon size={20} />
     <span className="font-medium [.uwu_&]:hidden [header_&]:text-[15px]">
       Palidocs
     </span>

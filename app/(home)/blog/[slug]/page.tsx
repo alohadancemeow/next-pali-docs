@@ -19,7 +19,7 @@ export default async function Page(props: {
   const { body: Mdx, toc } = await page.data.load();
 
   return (
-    <div lang="en">
+    <div lang="mixed" id="blog-page" className="leading-relaxed">
       <div
         className="container rounded-xl mt-12 py-12 md:px-8"
         style={{
@@ -32,10 +32,12 @@ export default async function Page(props: {
           backgroundBlendMode: "difference, normal, normal",
         }}
       >
-        <h1 className="mb-2 text-3xl font-bold text-white">
+        <h1 className="mb-2 text-4xl font-extrabold text-white">
           {page.data.title}
         </h1>
-        <p className="mb-4 text-white/80">{page.data.description}</p>
+        <p className="mb-4 text-white/80 font-semibold">
+          {page.data.description}
+        </p>
         <Link
           href="/blog"
           className={buttonVariants({ size: "sm", variant: "secondary" })}
@@ -43,12 +45,18 @@ export default async function Page(props: {
           Back
         </Link>
       </div>
-      <article className="container flex flex-col px-0 py-8 lg:flex-row lg:px-4 font-normal leading-relaxed">
+      <article
+        // lang="th"
+        className="container flex flex-col px-0 py-8 lg:flex-row lg:px-4 font-normal leading-relaxed"
+      >
         <div className="prose min-w-0 flex-1 p-4">
           <InlineTOC items={toc} />
           <Mdx components={getMDXComponents()} />
         </div>
-        <div className="flex flex-col gap-4 border-l p-4 text-sm lg:w-[250px]">
+        <div
+          lang="en"
+          className="flex flex-col gap-4 border-l p-4 text-sm lg:w-[250px]"
+        >
           <div>
             <p className="mb-1 text-fd-muted-foreground">Written by</p>
             <p className="font-medium">{page.data.author}</p>

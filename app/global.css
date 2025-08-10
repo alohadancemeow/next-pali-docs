@@ -3,8 +3,7 @@
 @import "fumadocs-ui/css/preset.css";
 @import "tw-animate-css";
 
-/* @custom-variant dark (&:is(.dark *)); */
-@custom-variant dark (&:is([data-theme="dark"] *));
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -45,6 +44,7 @@
 }
 
 :root {
+  --font-blog: "IBM Plex Sans Thai", sans-serif;
   --radius: 0.65rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
@@ -152,9 +152,20 @@ body :where(*:lang(th)) {
   font-weight: 600;
 }
 
+/* #blog-page */
+body :where(*:lang(mixed)) {
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  /* font-weight: 400; */
+}
+
 pre > code * {
   font-family: "Geist Mono", monospace !important;
   font-weight: 400;
+}
+
+[data-radix-popper-content-wrapper] * {
+  font-family: "Thasadith", sans-serif;
+  font-weight: 600;
 }
 
 /* For automatic detection of Thai text */
