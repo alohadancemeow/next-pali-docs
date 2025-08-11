@@ -238,7 +238,7 @@ function Message({
           message.role === "assistant" && "text-fd-primary"
         )}
       >
-        {`${roleName[message.role]}:` ?? "unknown"}
+        {`${roleName[message.role]}:` || "unknown"}
       </p>
       <div className="prose text-sm">
         <Markdown text={markdown} />
