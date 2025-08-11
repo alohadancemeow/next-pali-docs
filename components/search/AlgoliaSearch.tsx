@@ -4,6 +4,7 @@ import "@docsearch/css";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { DocSearch } from "@docsearch/react";
+import { useTheme } from "next-themes";
 
 type Props = {};
 
@@ -28,6 +29,8 @@ const SearchErrorFallback = ({ error, resetErrorBoundary }: any) => (
 
 // DocSearch component
 const DocSearchComponent = () => {
+  const { theme } = useTheme();
+
   const appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
   const apiKey = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY;
 
@@ -52,6 +55,10 @@ const DocSearchComponent = () => {
           //   "title",
           //   "description",
           // ],
+        }}
+        theme={theme === "light" ? "light" : "dark"}
+        askAi={{
+          assistantId: process.env.NEXT_PUBLIC_ALGOLIA_ASSISTANT_ID as string,
         }}
       />
     </div>
