@@ -47,6 +47,14 @@ const DocSearchComponent = () => {
         apiKey={apiKey}
         indexName="docs"
         placeholder="Search documentation..."
+        transformItems={(items) =>
+          items.map((item) => ({
+            ...item,
+            // url: `${window.location.origin}${item.url}`,
+            url: `${siteMetadata.baseUrl}${item.url}`,
+            // url: `${siteMetadata.devUrl}${item.url}`,
+          }))
+        }
         searchParameters={{
           hitsPerPage: 20,
           // attributesToRetrieve: [
@@ -58,14 +66,6 @@ const DocSearchComponent = () => {
           //   "description",
           // ],
         }}
-        transformItems={(items) =>
-          items.map((item) => ({
-            ...item,
-            // url: `${window.location.origin}${item.url}`,
-            // url: `${siteMetadata.baseUrl}${item.url}`,
-            url: `${siteMetadata.devUrl}${item.url}`,
-          }))
-        }
         theme={theme === "light" ? "light" : "dark"}
         askAi={{
           assistantId,
