@@ -9,4 +9,6 @@ export const siteMetadata = {
   },
   liveSiteUrl: "http://localhost:3000",
   refSiteUrl: "https://pali-on-demand.vercel.app/",
+  devUrl: "https://next-pali-docs-git-dev-alohadancemeows-projects.vercel.app",
+  baseUrl: "https://next-pali-docs.vercel.app",
 };

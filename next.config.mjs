@@ -8,6 +8,9 @@ const config = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  experimental: {
+    globalNotFound: true,
+  },
 
   async rewrites() {
     return [

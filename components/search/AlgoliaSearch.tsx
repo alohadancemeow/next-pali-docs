@@ -4,6 +4,8 @@ import "@docsearch/css";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { DocSearch } from "@docsearch/react";
+import { useTheme } from "next-themes";
+import { siteMetadata } from "@/site.config";
 
 type Props = {};
 
@@ -28,10 +30,13 @@ const SearchErrorFallback = ({ error, resetErrorBoundary }: any) => (
 
 // DocSearch component
 const DocSearchComponent = () => {
+  const { theme } = useTheme();
+
   const appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
   const apiKey = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY;
+  const assistantId = process.env.NEXT_PUBLIC_ALGOLIA_ASSISTANT_ID as string;
 
-  if (!appId || !apiKey) {
+  if (!appId || !apiKey || !assistantId) {
     throw new Error("Algolia credentials not configured");
   }
 
@@ -42,6 +47,14 @@ const DocSearchComponent = () => {
         apiKey={apiKey}
         indexName="docs"
         placeholder="Search documentation..."
+        transformItems={(items) =>
+          items.map((item) => ({
+            ...item,
+            // url: `${window.location.origin}${item.url}`,
+            url: `${siteMetadata.baseUrl}${item.url}`,
+            // url: `${siteMetadata.devUrl}${item.url}`,
+          }))
+        }
         searchParameters={{
           hitsPerPage: 20,
           // attributesToRetrieve: [
@@ -52,6 +65,13 @@ const DocSearchComponent = () => {
           //   "title",
           //   "description",
           // ],
+        }}
+        theme={theme === "light" ? "light" : "dark"}
+        askAi={{
+          assistantId,
+          apiKey,
+          appId,
+          indexName: "docs",
         }}
       />
     </div>
