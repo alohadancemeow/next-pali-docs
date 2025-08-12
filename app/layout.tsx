@@ -1,12 +1,12 @@
 import "@/app/global.css";
 import { Provider } from "@/providers/RootProvider";
+import { Metadata } from "next";
 import {
   Thasadith,
   Geist,
   Geist_Mono,
   IBM_Plex_Sans_Thai,
 } from "next/font/google";
-import Head from "next/head";
 import type { ReactNode } from "react";
 
 const geist = Geist({
@@ -32,12 +32,14 @@ const ibm = IBM_Plex_Sans_Thai({
   weight: ["400", "500", "600", "700"],
 });
 
-// // Function to detect Thai language content
-// const isThaiContent = (text: string): boolean => {
-//   // Thai Unicode range: U+0E00-U+0E7F
-//   const thaiPattern = /[\u0E00-\u0E7F]/;
-//   return thaiPattern.test(text);
-// };
+export const metadata: Metadata = {
+  title: "Pali Docs",
+  description: "Pali Docs is a documentation site for Pali language.",
+  other: {
+    // algolia verification
+    "algolia-site-verification": "C43FA7A055938012",
+  },
+};
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -46,10 +48,6 @@ export default function Layout({ children }: { children: ReactNode }) {
       className={`${geist.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
-      <Head>
-        <meta name="algolia-site-verification" content="C43FA7A055938012" />
-      </Head>
-
       <body className="flex flex-col min-h-screen" suppressHydrationWarning>
         <Provider>
           <div lang="th">{children}</div>
