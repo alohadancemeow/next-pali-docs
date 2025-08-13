@@ -6,7 +6,8 @@ import { ReactNode } from "react";
 export default function QuizLayout({ children }: { children: ReactNode }) {
   return (
     <main className="container relative max-w-[1100px] px-2 py-4 z-2 lg:py-8">
-      <div
+      {children}
+      {/* <div
         style={{
           background:
             "repeating-linear-gradient(to bottom, transparent, color-mix(in oklab, var(--color-fd-primary) 1%, transparent) 500px, transparent 1000px)",
@@ -20,7 +21,7 @@ export default function QuizLayout({ children }: { children: ReactNode }) {
 
         <Break word="อตฺตา หเว ชิตํ เสยฺโย." meaning="ชนะตนนั่นแหละ เป็นดี ฯ" />
         <End />
-      </div>
+      </div> */}
     </main>
   );
 }

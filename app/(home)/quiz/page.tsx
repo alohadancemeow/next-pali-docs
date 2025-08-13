@@ -1,4 +1,4 @@
-import QuizContents from "./QuizContents";
+import QuizContents from "./components/QuizContents";
 
 export default function QuizPage() {
   return (
