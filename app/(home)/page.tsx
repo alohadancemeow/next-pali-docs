@@ -15,7 +15,19 @@ export default function HomePage() {
             "repeating-linear-gradient(to bottom, transparent, color-mix(in oklab, var(--color-fd-primary) 1%, transparent) 500px, transparent 1000px)",
         }}
       >
-        <Hero />
+        <Hero
+          mobileTitle="เรียนรู้ภาษาบาลีที่ครอบคลุมทุกระดับ"
+          title="เรียนรู้บาลีไวยากรณ์และค้นคว้าได้ด้วยตัวเองอย่างมีประสิทธิภาพ"
+          description="แหล่งเรียนรู้ภาษาบาลีที่ครอบคลุมทุกระดับ ด้วยเนื้อหาที่เป็นระบบ
+            ครบถ้วน และเข้าใจง่าย ตั้งแต่พื้นฐานจนถึงขั้นสูง
+            ค้นคว้าและเรียนรู้ได้ด้วยตัวเองอย่างมีประสิทธิภาพ"
+          cta={{
+            primaryLabel: "เริ่มต้นเรียนบาลีไวยากรณ์",
+            primaryHref: "/docs/part-1",
+            secondaryLabel: "ทำแบบทดสอบ",
+            secondaryHref: "/quiz",
+          }}
+        />
         {/* <UwuHero /> */}
         {/* <Feedback />
         <Introduction /> */}
