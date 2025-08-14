@@ -7,12 +7,14 @@ import { Button } from "@/components/ui/button";
 import { Question, QuizQuestion } from "../components/QuizQuestont";
 import { getStats } from "@/helpers/get-stats";
 import { CheckCircle } from "lucide-react";
+import { QuizResponse } from "@/actions/quiz";
 
 type Props = {
   selectedTopic: string | null;
   currentPage: number;
   setCurrentPage: (page: number) => void;
   questions: Question[];
+  object: QuizResponse;
   answers: Record<string, string>;
   quizCompleted: boolean;
   timeExpired: boolean;
@@ -30,6 +32,7 @@ const QuizState = ({
   currentPage,
   setCurrentPage,
   questions,
+  object,
   answers,
   quizCompleted,
   timeExpired,
@@ -92,11 +95,11 @@ const QuizState = ({
         <Card>
           <CardContent className="p-6">
             <div className="space-y-8">
-              {/* {isLoading && (
-                  <div className="text-center">{`${
-                    object?.questions?.length || 0
-                  } Questions rendering ...`}</div>
-                )} */}
+              {isLoading && (
+                <div className="text-center">{`${
+                  object?.questions?.length || 0
+                } Questions rendering ...`}</div>
+              )}
               {!isLoading &&
                 currentQuestions.map((question, index) => (
                   <QuizQuestion

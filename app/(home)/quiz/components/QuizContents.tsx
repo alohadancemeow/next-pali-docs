@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { quizTopics } from "@/data/quiz-topic";
 import { LoadingOverlay } from "./LoadingOverlay";
 import { getStats } from "@/helpers/get-stats";
@@ -8,6 +8,9 @@ import HomeState from "../states/HomeState";
 import Disclaimer from "./Disclaimer";
 import QuizState from "../states/QuizState";
 import ResultState from "../states/ResultState";
+import { experimental_useObject as useObject } from "@ai-sdk/react";
+import { QuizResponse, quizResponeseSchema } from "@/actions/quiz";
+import { mapQuestionsFromResponse } from "@/helpers/map-questions";
 
 export interface Question {
   id: string;
@@ -30,12 +33,12 @@ const Highlights = () => {
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [timeExpired, setTimeExpired] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const { object, submit, isLoading, stop, error } = useObject({
+    api: "/api/quiz",
+    schema: quizResponeseSchema,
+  });
 
-  // const { object, submit, isLoading, stop, error } = useObject({
-  //   api: "/api/quiz-api",
-  //   schema: quizResponeseSchema,
-  // });
+  // console.log(object, "object");
 
   const handleStartQuiz = async (topicId: string) => {
     setSelectedTopic(topicId);
@@ -49,15 +52,15 @@ const Highlights = () => {
       return;
     }
 
-    // submit({
-    //   amount: topic.amount,
-    //   topics: topic.keywords,
-    // });
+    submit({
+      amount: topic.amount,
+      topics: topic.keywords,
+    });
 
-    // if (error) {
-    //   console.error("Error generating questions:", error);
-    //   return;
-    // }
+    if (error) {
+      console.error("Error generating questions:", error);
+      return;
+    }
 
     resetQuizState();
   };
@@ -115,6 +118,22 @@ const Highlights = () => {
     setQuestions([]);
   };
 
+  // Handle question data when received
+  useEffect(() => {
+    if (object?.questions && !isLoading) {
+      const mappedQuestions = mapQuestionsFromResponse(object.questions);
+      setQuestions(mappedQuestions);
+      setAppState("quiz");
+    }
+  }, [object, isLoading]);
+
+  // Scroll to top when changing pages
+  useEffect(() => {
+    if (appState === "quiz" || appState === "results") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [currentPage, appState]);
+
   // # Home State
   if (appState === "home") {
     return <HomeState onStartQuiz={handleStartQuiz} />;
@@ -134,6 +153,7 @@ const Highlights = () => {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           questions={questions}
+          object={object as QuizResponse}
           answers={answers}
           quizCompleted={quizCompleted}
           timeExpired={timeExpired}
