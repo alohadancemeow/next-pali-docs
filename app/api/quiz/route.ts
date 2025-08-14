@@ -1,11 +1,5 @@
-import { quizAction } from "@/actions/quiz";
+import { quizAction, quizSchema } from "@/actions/quiz";
 import { NextResponse } from "next/server";
-import { z } from "zod";
-
-export const quizSchema = z.object({
-  topics: z.array(z.string()),
-  amount: z.number(),
-});
 
 export async function POST(req: Request) {
   try {
@@ -23,13 +17,6 @@ export async function POST(req: Request) {
 
     // If there's an error, return it
     if ("error" in result) {
-      //   return new Response(JSON.stringify(result), {
-      //     status: 400,
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //   });
-
       return NextResponse.json({ error: result.error }, { status: 400 });
     }
 
@@ -39,16 +26,6 @@ export async function POST(req: Request) {
     return result;
   } catch (error) {
     console.error("Error processing quiz request:", error);
-
-    // return new Response(
-    //   JSON.stringify({ error: "Failed to process request" }),
-    //   {
-    //     status: 500,
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // );
 
     return NextResponse.json(
       { error: "Failed to process request" },

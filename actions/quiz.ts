@@ -2,10 +2,16 @@ import { streamObject } from "ai";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { z } from "zod";
 
-const bookContent = "Pali content";
+// Note: The book content is a placeholder. In a real scenario, you would fetch the actual book content.
+const bookContent = "Pali content here...";
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
+
+export const quizSchema = z.object({
+  topics: z.array(z.string()),
+  amount: z.number(),
+});
 
 export const quizResponeseSchema = z.object({
   questions: z.array(
