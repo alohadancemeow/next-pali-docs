@@ -39,6 +39,11 @@ We believe learning shouldn't be limited by textbooks but should be opened up th
 * **Complete & Searchable Curriculum:** From **grammar** to **sentence structure** and **prosody**, we've got you covered. Find exactly what you need in a beautifully organized, searchable format.
 * **Lightning-Fast Search:** Find what you're looking for in milliseconds with our Algolia-powered search. No more flipping through hundreds of pages.
 
+
+## 🖼️ Screenshot:
+
+![screenshot](/public/Screenshot.png)
+
 ## Development
 
 This is a Next.js application generated with
